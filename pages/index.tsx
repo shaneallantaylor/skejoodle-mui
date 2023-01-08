@@ -1,14 +1,7 @@
-import { useState } from 'react';
 import Head from 'next/head'
-import { Dayjs } from 'dayjs';
-import TextField from '@mui/material/TextField';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
-
+import DatePicker from '../components/DatePicker'
+import TimePicker from '../components/TimePicker'
 export default function Home() {
-  const [value, setValue] = useState<Dayjs | null>(null);
-
   return (
     <>
       <Head>
@@ -18,19 +11,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div style={{ cursor: 'pointer' }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <MobileDatePicker
-              label="Pick a Date!"
-              value={value}
-              onChange={(newValue) => {
-                setValue(newValue);
-              }}
-              renderInput={(params) => <TextField {...params} />}
-
-            />
-          </LocalizationProvider>
-        </div>
+        <DatePicker />
+        <TimePicker />
       </main>
     </>
   )
