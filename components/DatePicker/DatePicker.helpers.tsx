@@ -1,11 +1,8 @@
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import dayjs, { Dayjs } from 'dayjs';
+import { dayMocks } from '../../utils/date-mocks';
 
-const daysUserHasAlreadySelected =
-  [dayjs('Mon, 09 Jan 2023 08:00:00 GMT'),
-  dayjs('Wed, 11 Jan 2023 08:00:00 GMT'),
-  dayjs('Mon, 16 Jan 2023 08:00:00 GMT')
-  ];
+const daysUserHasAlreadySelected = [...dayMocks];
 
 export function renderStyledDay(
   day: Dayjs,
