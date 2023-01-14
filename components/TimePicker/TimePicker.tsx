@@ -3,7 +3,9 @@ import dayjs, { Dayjs } from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { MobileTimePicker } from '@mui/x-date-pickers/MobileTimePicker';
+import { StaticTimePicker } from '@mui/x-date-pickers/StaticTimePicker';
+import { useSetAtom } from 'jotai';
+import { setModalClose } from '../../atoms/ModalAtom';
 
 
 export default function ResponsiveTimePickers() {
@@ -11,17 +13,25 @@ export default function ResponsiveTimePickers() {
     dayjs().startOf('hour'),
   );
 
+  const closeModal = useSetAtom(setModalClose);
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <MobileTimePicker
-        label="For mobile"
+      <StaticTimePicker
+        label="Pick a time"
         value={value}
         onChange={(newValue) => {
-          setValue(newValue);
+          if (dayjs.isDayjs(newValue))
+            setValue(newValue);
         }}
         renderInput={(params) => <TextField {...params} />}
         minutesStep={30}
-        closeOnSelect={true}
+        onAccept={closeModal}
+        componentsProps={{
+          actionBar: {
+            actions: ['clear', 'accept']
+          }
+        }}
       />
     </LocalizationProvider>
   );
