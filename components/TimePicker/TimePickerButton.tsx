@@ -24,18 +24,17 @@ export default function TimePickerButton() {
 
 
   return (
-    <div>
+    <>
       <Button onClick={openModal}><span>Add Time</span><AddCircleIcon /></Button>
       <Modal
         open={isOpen}
-        // onClick={() => console.log('you clicked on the backdrop!')}
         onClose={closeModal}
       >
         <Box sx={style}>
           <TimePicker />
         </Box>
       </Modal>
-    </div>
+    </>
   )
 }
 

@@ -9,12 +9,13 @@ import {
 
 import { renderStyledDay } from './DatePicker.helpers'
 import { Box } from '@mui/material';
+import DatePickerActionsBar from './DatePickerActionsBar';
+import { setNewDate as setNewDateAtom } from '../../atoms/SelectedAtom';
 import { useSetAtom } from 'jotai';
-import { setModalClose } from '../../atoms/ModalAtom';
 
 export default function DatePicker() {
   const [value, setValue] = useState<Dayjs | null>(dayjs());
-  const closeModal = useSetAtom(setModalClose);
+  const setNewDate = useSetAtom(setNewDateAtom);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -29,8 +30,11 @@ export default function DatePicker() {
           }}
           renderInput={(params) => <TextField {...params} />}
           renderDay={renderStyledDay}
-          onAccept={closeModal}
           disablePast
+          onAccept={() => setNewDate(value)}
+          components={{
+            ActionBar: DatePickerActionsBar,
+          }}
         />
       </Box>
     </LocalizationProvider>

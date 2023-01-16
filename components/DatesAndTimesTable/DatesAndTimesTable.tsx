@@ -1,0 +1,54 @@
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import { getSelectedDates } from '../../atoms/SelectedAtom';
+import dayjs from 'dayjs';
+import { useAtomValue } from 'jotai';
+import { Grid } from '@mui/material';
+
+const style = {
+  width: '100%',
+  padding: 0,
+  bgcolor: 'background.paper',
+};
+
+const headerStyle = {
+  width: '100%',
+  bgcolor: 'grey'
+}
+
+export default function DatesAndTimesTable() {
+  const dates = useAtomValue(getSelectedDates);
+
+  const datesAndTimes = dates.map(({ date, times }) => {
+    if (dayjs.isDayjs(date)) {
+      return (
+        <Grid item minWidth={160} key={dayjs(date).unix()}>
+          <List sx={style} component="ul" aria-label="Times for the day">
+            <ListItem sx={headerStyle}>
+              <ListItemText primary={dayjs(date).format('ddd, MMMM D')} />
+            </ListItem>
+            {times.map((timeOnDay) => {
+              if (dayjs.isDayjs(timeOnDay)) {
+                return (
+                  <ListItem divider>
+                    <ListItemText primary={dayjs(timeOnDay).format('h:m a')} />
+                  </ListItem>
+                )
+              }
+              return null
+            })}
+          </List>
+        </Grid>
+      )
+    }
+    return null
+  })
+
+
+  return (
+    <Grid wrap='nowrap' container spacing={0}>
+      {datesAndTimes}
+    </Grid>
+  )
+}

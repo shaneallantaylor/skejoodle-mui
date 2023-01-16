@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import DatePicker from '../components/DatePicker'
-import SelectedDatesAndTimes from '../components/SelectedDatesAndTimes'
+import DatePickerButton from '../components/DatePicker'
 import TimePickerButton from '../components/TimePicker'
+import SelectedDatesAndTimes from '../components/SelectedDatesAndTimes'
 export default function Home() {
   return (
     <>
@@ -12,10 +12,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {/* <DatePicker /> */}
-        {/* <TimePicker /> */}
         <SelectedDatesAndTimes />
-        <TimePickerButton />
       </main>
     </>
   )
