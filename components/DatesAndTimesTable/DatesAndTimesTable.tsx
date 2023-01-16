@@ -26,7 +26,7 @@ export default function DatesAndTimesTable() {
         <Grid item minWidth={160} key={dayjs(date).unix()}>
           <List sx={style} component="ul" aria-label="Times for the day">
             <ListItem sx={headerStyle}>
-              <ListItemText primary={dayjs(date).format('ddd, MMMM D')} />
+              <ListItemText primary={dayjs(date).format('ddd M/D')} />
             </ListItem>
             {times.map((timeOnDay) => {
               if (dayjs.isDayjs(timeOnDay)) {

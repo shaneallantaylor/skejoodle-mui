@@ -2,7 +2,6 @@ import { Box, Grid, } from '@mui/material'
 
 import DatePickerButton from '../DatePicker'
 import TimePickerButton from '../TimePicker'
-
 import DatesAndTimesTable from '../DatesAndTimesTable';
 
 export default function SelectedDatesAndTimes() {

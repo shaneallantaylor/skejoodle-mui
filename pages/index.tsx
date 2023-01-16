@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import DatePickerButton from '../components/DatePicker'
-import TimePickerButton from '../components/TimePicker'
 import SelectedDatesAndTimes from '../components/SelectedDatesAndTimes'
 export default function Home() {
   return (
