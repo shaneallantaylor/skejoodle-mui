@@ -1,18 +1,18 @@
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
-import dayjs, { Dayjs } from 'dayjs';
-import { dayMocks } from '../../utils/date-mocks';
+import { Dayjs } from 'dayjs';
 
-const daysUserHasAlreadySelected = [...dayMocks];
 
 export function renderStyledDay(
   day: Dayjs,
   selectedDays: Dayjs[],
-  pickersDayProps: PickersDayProps<Dayjs>
+  pickersDayProps: PickersDayProps<Dayjs>,
+  userSelectedDates: (Dayjs | null)[],
 ) {
+
   let userHasAlreadySelected;
 
-  for (const userSelectedDay of daysUserHasAlreadySelected) {
-    if (day.isSame(userSelectedDay)) {
+  for (const date of userSelectedDates) {
+    if (day.isSame(date, 'day')) {
       userHasAlreadySelected = true;
     }
   }

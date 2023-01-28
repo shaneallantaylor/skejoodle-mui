@@ -3,6 +3,8 @@ import { Box, Button, Modal } from '@mui/material'
 import TimePicker from './TimePicker';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { isTimeModalOpen, setModalClose, setTimeModalOpen } from '../../atoms/ModalAtom';
+import { Dayjs } from 'dayjs';
+import { setDateToUpdate as setDateToUpdateAtom } from '../../atoms/SelectedAtom';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -16,19 +18,28 @@ const style = {
   p: 4,
 };
 
-export default function TimePickerButton() {
+export default function TimePickerButton({ dateToUpdate }: { dateToUpdate: Dayjs }) {
   const isOpen = useAtomValue(isTimeModalOpen);
   const openModal = useSetAtom(setTimeModalOpen);
   const closeModal = useSetAtom(setModalClose);
+  const setDateToUpdate = useSetAtom(setDateToUpdateAtom);
 
+  const handleOpenModal = () => {
+    setDateToUpdate(dateToUpdate)
+    openModal();
+  };
 
+  const handleOnClose = () => {
+    setDateToUpdate(null)
+    closeModal();
+  }
 
   return (
     <>
-      <Button onClick={openModal}><span>Add Time</span><AddCircleIcon /></Button>
+      <Button onClick={handleOpenModal}><span>Add Time</span><AddCircleIcon /></Button>
       <Modal
         open={isOpen}
-        onClose={closeModal}
+        onClose={handleOnClose}
       >
         <Box sx={style}>
           <TimePicker />

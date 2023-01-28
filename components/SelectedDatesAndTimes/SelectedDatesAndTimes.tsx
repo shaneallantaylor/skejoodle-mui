@@ -1,7 +1,6 @@
 import { Box, Grid, } from '@mui/material'
 
 import DatePickerButton from '../DatePicker'
-import TimePickerButton from '../TimePicker'
 import DatesAndTimesTable from '../DatesAndTimesTable';
 
 export default function SelectedDatesAndTimes() {
@@ -15,10 +14,9 @@ export default function SelectedDatesAndTimes() {
           alignItems="flex-end"
         >
           <p>Here is your table</p>
+          <DatePickerButton />
         </Grid>
         <DatesAndTimesTable />
-        <DatePickerButton />
-        <TimePickerButton />
       </Box >
     </>
   )

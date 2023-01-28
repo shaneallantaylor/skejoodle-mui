@@ -10,12 +10,13 @@ import {
 import { renderStyledDay } from './DatePicker.helpers'
 import { Box } from '@mui/material';
 import DatePickerActionsBar from './DatePickerActionsBar';
-import { setNewDate as setNewDateAtom } from '../../atoms/SelectedAtom';
-import { useSetAtom } from 'jotai';
+import { setNewDate as setNewDateAtom, getSelectedDates } from '../../atoms/SelectedAtom';
+import { useAtomValue, useSetAtom } from 'jotai';
 
 export default function DatePicker() {
-  const [value, setValue] = useState<Dayjs | null>(dayjs());
+  const [value, setValue] = useState<Dayjs | null>(dayjs().startOf('day'));
   const setNewDate = useSetAtom(setNewDateAtom);
+  const userSelectedDates = useAtomValue(getSelectedDates);
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -29,7 +30,16 @@ export default function DatePicker() {
             setValue(newValue);
           }}
           renderInput={(params) => <TextField {...params} />}
-          renderDay={renderStyledDay}
+          renderDay={(
+            value,
+            selectedDays,
+            pickersDayProps
+          ) => renderStyledDay(
+            value,
+            selectedDays,
+            pickersDayProps,
+            userSelectedDates
+          )}
           disablePast
           onAccept={() => setNewDate(value)}
           components={{
