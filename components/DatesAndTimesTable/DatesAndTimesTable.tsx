@@ -20,7 +20,6 @@ const headerStyle = {
 
 export default function DatesAndTimesTable() {
   const dates = useAtomValue(getSelectedDatesAndTimes);
-  console.log('in the TABLE, dates is', dates);
 
   const datesAndTimes = dates.map(({ date, times }) => {
     if (dayjs.isDayjs(date)) {
