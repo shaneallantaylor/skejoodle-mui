@@ -51,21 +51,13 @@ export const setNewDate = atom(null, (get, set, update) => {
 export const setNewTimeOnDate = atom(null, (get, set, { dateToUpdate, timeToAdd }) => {
   const currentSelectedDates = get(selectedAtomConfig);
 
-  // Maybe use MAP instead? We want all the things, it's just in a specific case we want to do a special thing to it.
-  // or maybe this is a good reason to bring in Immer?
-  const newSelections = currentSelectedDates.reduce((acc, { date, times }) => {
-    if (dayjs.isDayjs(date) && date.isSame(dateToUpdate, 'day')) {
-      const sortedTimes = [...times, timeToAdd].sort(sortSoonestFirstTime)
-      return [...acc, { date, times: sortedTimes }];
+  const newSelectionsMap = currentSelectedDates.map((entry) => {
+    if (dayjs.isDayjs(entry.date) && entry.date.isSame(dateToUpdate, 'day')) {
+      const sortedTimes = [...entry.times, timeToAdd].sort(sortSoonestFirstTime);
+      return { date: entry.date, times: sortedTimes };
     }
+    return entry
+  });
 
-    return [...acc, { date, times }];
-
-  }, []);
-
-  // const newSelections = [...currentSelectedDates, { date: date, times: [timeToAdd] }].sort(sortSoonestFirst);
-
-  return set(selectedAtomConfig, [...newSelections])
-})
-
-// setNewTimeOnDate(date, timeToAdd)
+  return set(selectedAtomConfig, [...newSelectionsMap])
+});
