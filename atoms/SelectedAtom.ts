@@ -49,7 +49,7 @@ export const setNewDate = atom(null, (get, set, update) => {
 export const setNewTimeOnDate = atom(null, (get, set, { dateToUpdate, timeToAdd }) => {
   const currentSelectedDates = get(selectedAtomConfig);
 
-  const newSelectionsMap = currentSelectedDates.map((entry) => {
+  const newSelections = currentSelectedDates.map((entry) => {
     if (dayjs.isDayjs(entry.date) && entry.date.isSame(dateToUpdate, 'day')) {
       const sortedTimes = [...entry.times, timeToAdd].sort(sortSoonestFirstTime);
       return { date: entry.date, times: sortedTimes };
@@ -57,5 +57,5 @@ export const setNewTimeOnDate = atom(null, (get, set, { dateToUpdate, timeToAdd 
     return entry
   });
 
-  return set(selectedAtomConfig, [...newSelectionsMap])
+  return set(selectedAtomConfig, [...newSelections])
 });
