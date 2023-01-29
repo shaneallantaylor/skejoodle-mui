@@ -1,8 +1,10 @@
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from "@mui/material";
+import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from "@emotion/react";
 import createEmotionCache from "../utils/createEmotionCache";
 import theme from "../utils/theme";
+import Layout from '../components/Layout';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -18,7 +20,10 @@ export default function App({
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <CssBaseline />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </CacheProvider>
   )

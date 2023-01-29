@@ -10,6 +10,17 @@ export const roboto = Roboto({
 
 // Create a theme instance.
 const theme = createTheme({
+  components: {
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          "&.Mui-expanded": {
+            "margin": 0
+          }
+        }
+      }
+    }
+  },
   palette: {
     primary: {
       main: '#556cd6',
