@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import dayjs, { Dayjs } from 'dayjs';
+import { Dayjs } from 'dayjs';
 import TextField from '@mui/material/TextField';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import {
@@ -14,7 +14,7 @@ import { setNewDate as setNewDateAtom, getSelectedDates } from '../../atoms/Sele
 import { useAtomValue, useSetAtom } from 'jotai';
 
 export default function DatePicker() {
-  const [value, setValue] = useState<Dayjs | null>(dayjs().startOf('day'));
+  const [value, setValue] = useState<Dayjs | null>(null);
   const setNewDate = useSetAtom(setNewDateAtom);
   const userSelectedDates = useAtomValue(getSelectedDates);
 

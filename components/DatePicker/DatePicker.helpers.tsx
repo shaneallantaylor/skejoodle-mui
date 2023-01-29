@@ -1,7 +1,6 @@
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import { Dayjs } from 'dayjs';
 
-
 export function renderStyledDay(
   day: Dayjs,
   selectedDays: Dayjs[],

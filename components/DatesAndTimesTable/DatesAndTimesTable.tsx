@@ -47,7 +47,6 @@ export default function DatesAndTimesTable() {
     return null
   })
 
-
   return (
     <Grid wrap='nowrap' container spacing={0}>
       {datesAndTimes}

@@ -7,18 +7,14 @@ import { StaticTimePicker } from '@mui/x-date-pickers/StaticTimePicker';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { setModalClose } from '../../atoms/ModalAtom';
 import { getDateToUpdate, setNewTimeOnDate as setNewTimeOnDateAtom } from '../../atoms/SelectedAtom';
-
+import TimePickerActionsBar from './TimePickerActionsBars';
 
 export default function StaticTimePickers() {
-  const [time, setTime] = useState<Dayjs | null>(
-    dayjs().startOf('hour'),
-  );
-
+  const [time, setTime] = useState<Dayjs | null>(null);
+  const dateToUpdate = useAtomValue(getDateToUpdate);
   const setNewTimeOnDate = useSetAtom(setNewTimeOnDateAtom);
   const closeModal = useSetAtom(setModalClose);
-  const dateToUpdate = useAtomValue(getDateToUpdate)
-  // dateToUpdate needs to be dynamic
-  // it should be populated by WHICH "Add Time" button a user clicks on 
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <StaticTimePicker
@@ -30,18 +26,20 @@ export default function StaticTimePickers() {
         }}
         renderInput={(params) => <TextField {...params} />}
         minutesStep={30}
-        onAccept={() => {
-          setNewTimeOnDate({
-            dateToUpdate: dateToUpdate,
-            timeToAdd: time
-          })
+        onAccept={(acc) => {
+          if (dayjs.isDayjs(acc)) {
+            setNewTimeOnDate({
+              dateToUpdate: dateToUpdate,
+              timeToAdd: time
+            })
+          }
           closeModal();
         }}
-        componentsProps={{
-          actionBar: {
-            actions: ['clear', 'accept']
-          }
+        components={{
+          ActionBar: TimePickerActionsBar,
         }}
+        disableIgnoringDatePartForTimeValidation={true}
+        ignoreInvalidInputs={false}
       />
     </LocalizationProvider>
   );

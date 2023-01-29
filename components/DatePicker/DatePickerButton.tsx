@@ -5,7 +5,6 @@ import DatePicker from '../DatePicker/StaticDatePicker';
 import { isDateModalOpen, setDateModalOpen, setModalClose } from '../../atoms/ModalAtom';
 import { useAtomValue, useSetAtom } from 'jotai';
 
-
 const modalContentStyle = {
   position: 'absolute' as 'absolute',
   top: '50%',
@@ -17,10 +16,6 @@ const modalContentStyle = {
   boxShadow: 24,
   p: 4,
 };
-
-
-
-
 
 export default function SelectedDatesAndTimes() {
   const isOpen = useAtomValue(isDateModalOpen);

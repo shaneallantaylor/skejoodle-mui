@@ -46,8 +46,6 @@ export const setNewDate = atom(null, (get, set, update) => {
   }
 })
 
-
-
 export const setNewTimeOnDate = atom(null, (get, set, { dateToUpdate, timeToAdd }) => {
   const currentSelectedDates = get(selectedAtomConfig);
 

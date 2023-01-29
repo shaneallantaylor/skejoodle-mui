@@ -7,7 +7,7 @@ import { Button, Grid } from "@mui/material";
 import { PickersActionBarProps } from '@mui/x-date-pickers/PickersActionBar';
 import { WrapperVariantContext } from '@mui/x-date-pickers/internals';
 
-export default function DatePickerActionsBar(props: PickersActionBarProps) {
+export default function TimePickerActionsBar(props: PickersActionBarProps) {
   const {
     onAccept,
     onClear,
