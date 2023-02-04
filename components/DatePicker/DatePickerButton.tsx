@@ -24,7 +24,18 @@ export default function SelectedDatesAndTimes() {
 
   return (
     <>
-      <Button onClick={openModal}><span>Add Date</span><AddCircleIcon /></Button>
+      <Button
+        variant='contained'
+        disableElevation
+        disableFocusRipple
+        disableRipple
+        fullWidth
+        size='large'
+        onClick={openModal}
+        endIcon={<AddCircleIcon />}
+      >
+        <span>Add Date</span>
+      </Button>
       <Modal
         open={isOpen}
         onClose={closeModal}

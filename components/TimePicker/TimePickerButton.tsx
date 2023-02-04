@@ -36,7 +36,12 @@ export default function TimePickerButton({ dateToUpdate }: { dateToUpdate: Dayjs
 
   return (
     <>
-      <Button onClick={handleOpenModal}><span>Add Time</span><AddCircleIcon /></Button>
+      <Button
+        onClick={handleOpenModal}
+        endIcon={<AddCircleIcon />}
+      >
+        <span>Add Time</span>
+      </Button>
       <Modal
         open={isOpen}
         onClose={handleOnClose}

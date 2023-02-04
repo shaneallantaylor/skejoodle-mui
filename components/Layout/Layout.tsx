@@ -5,9 +5,15 @@ import Navbar from './Navbar'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <Grid container direction='column' sx={{ minHeight: '100svh' }}>
+    <Grid container alignItems='center' direction='column' sx={{ minHeight: '100svh' }}>
       <Navbar />
-      <main>{children}</main>
+      <main
+        style={{
+          maxWidth: 800
+        }}
+      >
+        {children}
+      </main>
       <Footer />
     </Grid >
   )

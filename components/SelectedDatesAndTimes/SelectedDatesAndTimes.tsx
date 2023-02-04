@@ -13,7 +13,6 @@ export default function SelectedDatesAndTimes() {
           justifyContent="space-between"
           alignItems="flex-end"
         >
-          <p>Here is your table</p>
           <DatePickerButton />
         </Grid>
         <DatesAndTimesTable />
