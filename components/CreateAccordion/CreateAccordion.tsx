@@ -7,8 +7,15 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import SelectedDatesAndTimes from '../SelectedDatesAndTimes';
+import { Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField } from '@mui/material';
 
 export default function CreateAccordion() {
+  const [age, setAge] = React.useState('');
+
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
+
   return (
     <>
       <Accordion>
@@ -20,10 +27,24 @@ export default function CreateAccordion() {
           <Typography variant='h3'>Event Info</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <p>Title</p>
-          <p>Description</p>
-          <p>Location</p>
-          <p>Your Timezone</p>
+          <TextField margin="normal" fullWidth id="outlined-basic" label="Meeting Title" variant="outlined" />
+          <TextField margin="normal" fullWidth id="outlined-basic" label="Description" variant="outlined" />
+          <TextField margin="normal" fullWidth id="outlined-basic" label="Location" variant="outlined" />
+          <FormControl margin="normal" fullWidth>
+            <InputLabel id="demo-simple-select-label">Time Zone</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={age}
+              label="Time Zone"
+              onChange={handleChange}
+            >
+              <MenuItem value={'wtf'}>Pacific</MenuItem>
+              <MenuItem value={'yes'}>Mountain</MenuItem>
+              <MenuItem value={'dont'}>Eastern</MenuItem>
+            </Select>
+          </FormControl>
+          <Button variant='contained'>Next</Button>
         </AccordionDetails>
       </Accordion>
       <Accordion>
