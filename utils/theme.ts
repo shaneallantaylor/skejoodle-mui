@@ -1,12 +1,23 @@
-import { Roboto } from '@next/font/google';
+import { Mukta } from '@next/font/google';
 import { createTheme } from "@mui/material/styles";
 
-export const roboto = Roboto({
-  weight: ['300', '400', '500', '700'],
+export const mukta = Mukta({
+  weight: ['300', '500', '700'],
   subsets: ['latin'],
-  display: 'swap',
   fallback: ['Helvetica', 'Arial', 'sans-serif'],
 });
+
+const lightPalette = {
+  primary: {
+    main: '#FFFFFF',
+  },
+  secondary: {
+    main: '#FFFFFF',
+  },
+  error: {
+    main: '#FF0000',
+  },
+}
 
 // Create a theme instance.
 const theme = createTheme({
@@ -22,18 +33,10 @@ const theme = createTheme({
     }
   },
   palette: {
-    primary: {
-      main: '#556cd6',
-    },
-    secondary: {
-      main: '#19857b',
-    },
-    error: {
-      main: '#FF0000',
-    },
+    mode: 'light',
   },
   typography: {
-    fontFamily: roboto.style.fontFamily,
+    fontFamily: mukta.style.fontFamily,
   },
 });
 

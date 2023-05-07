@@ -24,8 +24,8 @@ export function renderStyledDay(
   }
 
   const customStyles = {
-    color: 'red',
-    background: 'black'
+    color: 'white',
+    background: 'white'
   }
 
   return (

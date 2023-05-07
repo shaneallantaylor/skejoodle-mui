@@ -1,17 +1,20 @@
-import { Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <div style={{
-      textAlign: 'left',
-      background: '#f3786a',
-      minHeight: 72,
-      width: '100%',
-      paddingLeft: '20px',
-      marginBottom: '20px'
-      // boxShadow: '0px 6px 15px -3px rgba(0,0,0,0.1)'
-    }}>
+    <Grid container direction='row' justifyContent='space-between'>
       <Typography lineHeight={'72px'} variant="h4">Skejoodle</Typography>
-    </div>
+      <Link href='/create' style={{ textDecoration: 'none', alignSelf: 'center' }}>
+        <Button
+          variant='contained'
+          disableElevation
+          disableFocusRipple
+          disableRipple
+        >
+          Create Meeting
+        </Button>
+      </Link>
+    </Grid>
   )
 }

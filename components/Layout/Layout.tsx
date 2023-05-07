@@ -6,14 +6,30 @@ import Navbar from './Navbar'
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <Grid container alignItems='center' direction='column' sx={{ minHeight: '100svh' }}>
-      <Navbar />
-      <main
-        style={{
-          maxWidth: 800
+      <Grid
+        component='nav'
+        item
+        sx={{
+          textAlign: 'left',
+          minHeight: 72,
+          width: '100%',
+          paddingLeft: '20px',
+          paddingRight: '20px',
+          marginBottom: '20px'
         }}
       >
+        <Navbar />
+      </Grid>
+      <Grid
+        component='main'
+        item
+        sx={{
+          width: '100%',
+        }}
+        style={{ maxWidth: '800px' }}
+      >
         {children}
-      </main>
+      </Grid>
       <Footer />
     </Grid >
   )

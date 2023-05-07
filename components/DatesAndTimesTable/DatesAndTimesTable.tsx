@@ -10,12 +10,12 @@ import TimePickerButton from '../TimePicker/TimePickerButton';
 const style = {
   width: '100%',
   padding: 0,
-  bgcolor: 'background.paper',
+  bgcolor: 'white',
 };
 
 const headerStyle = {
   width: '100%',
-  bgcolor: 'grey'
+  bgcolor: 'white'
 }
 
 export default function DatesAndTimesTable() {
